@@ -15,7 +15,12 @@ type GseTokenizer struct {
 }
 
 func NewGseTokenizer(dictFiles string) *GseTokenizer {
-	segmenter := gse.New("zh", dictFiles)
+	// segmenter := gse.New("./data/dict/zh/dict.txt", dictFiles)
+	// segmenter.MoreLog = false
+	// segmenter.SkipLog = true
+	var segmenter gse.Segmenter
+	segmenter.SkipLog = true
+	segmenter.LoadDict("./data/dict/zh/dict.txt", dictFiles)
 	return &GseTokenizer{&segmenter}
 }
 
@@ -26,11 +31,9 @@ func NewGseTokenizer(dictFiles string) *GseTokenizer {
 func (t *GseTokenizer) Tokenize(sentence []byte) analysis.TokenStream {
 	result := make(analysis.TokenStream, 0)
 	pos := 1
-	segments := t.segmenter.ModeSegment(sentence, true)
+	//segments := t.segmenter.ModeSegment(sentence, true)
+	segments := t.segmenter.Segment(sentence)
 	for _, seg := range segments {
-		// if strings.TrimSpace(seg.Token().Text()) == "" {
-		// 	continue
-		// }
 		token := analysis.Token{
 			Term:     []byte(seg.Token().Text()),
 			Start:    seg.Start(),
@@ -45,11 +48,12 @@ func (t *GseTokenizer) Tokenize(sentence []byte) analysis.TokenStream {
 }
 
 func tokenizerConstructor(config map[string]interface{}, cache *registry.Cache) (analysis.Tokenizer, error) {
+	dicts := ""
 	userDicts, ok := config["user_dicts"].(string)
 	if !ok {
-		return NewGseTokenizer(""), nil
+		dicts = userDicts
 	}
-	return NewGseTokenizer(userDicts), nil
+	return NewGseTokenizer(dicts), nil
 }
 
 func init() {
