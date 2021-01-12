@@ -61,3 +61,10 @@ go get -u github.com/leopku/bleve-gse-tokenizer
 
 	index.Close()
 ```
+
+See `bleve_test.go` for more examples.
+
+# Credit
+
+* https://github.com/blevesearch/bleve
+* https://github.com/go-ego/gse
