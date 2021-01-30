@@ -3,8 +3,8 @@ package gsebleve
 import (
 	"errors"
 
-	"github.com/blevesearch/bleve/analysis"
-	"github.com/blevesearch/bleve/registry"
+	"github.com/blevesearch/bleve/v2/analysis"
+	"github.com/blevesearch/bleve/v2/registry"
 )
 
 func NewAnalyzer(config map[string]interface{}, cache *registry.Cache) (*analysis.Analyzer, error) {

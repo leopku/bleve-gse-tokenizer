@@ -8,7 +8,7 @@ import (
 	"runtime/pprof"
 	"testing"
 
-	"github.com/blevesearch/bleve"
+	"github.com/blevesearch/bleve/v2"
 )
 
 func Example() {
