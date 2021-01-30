@@ -92,7 +92,7 @@ type testCase struct {
 	match uint64
 }
 
-func TestConvert(t *testing.T) {
+func TestSearch(t *testing.T) {
 	testData := []testCase{
 		{
 			"干事亲口交待", 1,
@@ -120,6 +120,30 @@ func TestConvert(t *testing.T) {
 		},
 		{
 			"亲口交待", 1,
+		},
+		{
+			"工信交待", 0,
+		},
+		{
+			"干事交待", 0, // !!
+		},
+		{
+			"干事亲口", 1, // !!
+		},
+		{
+			"干事亲口交待", 1,
+		},
+		{
+			"每月经过", 1,
+		},
+		{
+			"每月交代", 1, // !!
+		},
+		{
+			"每月技术", 1, // !!
+		},
+		{
+			"安装技术", 1, // !!
 		},
 	}
 
