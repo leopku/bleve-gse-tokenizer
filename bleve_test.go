@@ -86,3 +86,90 @@ func BenchmarkExample(b *testing.B) {
 		log.Fatal("could not write memory profile: ", err)
 	}
 }
+
+type testCase struct {
+	query string
+	match uint64
+}
+
+func TestConvert(t *testing.T) {
+	testData := []testCase{
+		{
+			"干事亲口交待", 1,
+		},
+		{
+			"干事", 0, // ???!
+		},
+		{
+			"女干事", 1,
+		},
+		{
+			"事亲", 0,
+		},
+		{
+			"亲口", 1,
+		},
+		{
+			"口交", 0,
+		},
+		{
+			"交待", 0, // ???!
+		},
+		{
+			"口交待", 1, // !!?
+		},
+		{
+			"亲口交待", 1,
+		},
+	}
+
+	INDEX_DIR := "bleve.gse"
+	message := "工信处女干事每月经过下属科室都要亲口交代24口交换机等技术性器件的安装工作"
+
+	mapping := bleve.NewIndexMapping()
+	os.RemoveAll(INDEX_DIR)
+	defer os.RemoveAll(INDEX_DIR)
+
+	if err := mapping.AddCustomTokenizer("gse", map[string]interface{}{
+		"type":       "gse",
+		"user_dicts": "",
+	}); err != nil {
+		panic(err)
+	}
+	if err := mapping.AddCustomAnalyzer("gse", map[string]interface{}{
+		"type":      "gse",
+		"tokenizer": "gse",
+	}); err != nil {
+		panic(err)
+	}
+	mapping.DefaultAnalyzer = "gse"
+
+	index, err := bleve.New(INDEX_DIR, mapping)
+	if err != nil {
+		panic(err)
+	}
+	if err := index.Index("1", message); err != nil {
+		panic(err)
+	}
+
+	for _, tc := range testData {
+		query := tc.query
+		req := bleve.NewSearchRequest(bleve.NewQueryStringQuery(query))
+		req.Highlight = bleve.NewHighlight()
+		res, err := index.Search(req)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Printf("Search of: '%s' ", query)
+
+		if tc.match != res.Total {
+			t.Errorf(`expected "%d" but got "%d" matches`, tc.match, res.Total)
+		} else {
+			fmt.Println("matched")
+		}
+
+	}
+
+	index.Close()
+
+}
