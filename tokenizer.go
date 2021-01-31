@@ -1,8 +1,8 @@
 package gsebleve
 
 import (
-	"github.com/blevesearch/bleve/analysis"
-	"github.com/blevesearch/bleve/registry"
+	"github.com/blevesearch/bleve/v2/analysis"
+	"github.com/blevesearch/bleve/v2/registry"
 	"github.com/go-ego/gse"
 )
 
