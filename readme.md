@@ -62,7 +62,11 @@ go get -u github.com/leopku/bleve-gse-tokenizer
 	index.Close()
 ```
 
-See `bleve_test.go` for more examples.
+See [`bleve_test.go`](blob/master/bleve_test.go) for more examples.
+
+# Ready-made tool(s)
+
+To make use of this package to index Chinese files (docs, journals, blogs, source-code, etc), check out [doc-search](https://github.com/suntong/doc-search).
 
 # Credit
 
