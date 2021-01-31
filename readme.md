@@ -1,6 +1,6 @@
 # Gse plugin for Bleve search engine
 
-Bleve 搜索引擎 Gse 插件。
+Bleve 搜索引擎 Gse 插件。支持英语、中文和日文。
 
 # Get the plugin
 
@@ -13,7 +13,9 @@ go get -u github.com/leopku/bleve-gse-tokenizer/v2
 # How to use
 
 > !!! IMPORTANT
+
 > `user_dicts` was required and should NOT be empty.
+
 > See `data/dict/zh/dict.txt` as example.
 
 ```go
