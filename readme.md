@@ -8,9 +8,13 @@ Bleve 搜索引擎 Gse 插件。
 go get -u github.com/leopku/bleve-gse-tokenizer/v2
 ```
 
-> To work with v1 version of bleve, please visit [v1](/leopku/bleve-gse-tokenizer/tree/v1) branch.
+> To work with v1 version of bleve, please visit [v1](../../tree/v1) branch.
 
 # How to use
+
+> !!! IMPORTANT
+> `user_dicts` was required and should NOT be empty.
+> See `data/dict/zh/dict.txt` as example.
 
 ```go
 	INDEX_DIR := "bleve.gse"
@@ -22,7 +26,7 @@ go get -u github.com/leopku/bleve-gse-tokenizer/v2
 
 	if err := mapping.AddCustomTokenizer("gse", map[string]interface{}{
 		"type":       "gse",
-		"user_dicts": "",  // <-- replace your customize dict here
+		"user_dicts": "./data/dict/zh/dict.txt",  // <-- MUST specified, otherwise panic would occurred.
 	}); err != nil {
 		panic(err)
 	}

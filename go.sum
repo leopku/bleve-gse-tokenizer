@@ -55,8 +55,6 @@ github.com/glycerine/goconvey v0.0.0-20190410193231-58a59202ab31 h1:gclg6gY70GLy
 github.com/glycerine/goconvey v0.0.0-20190410193231-58a59202ab31/go.mod h1:Ogl1Tioa0aV7gstGFO7KhffUsb9M4ydbEbbxpcEDc24=
 github.com/go-ego/cedar v0.10.2 h1:0AQkBNfHAzuUn306v0ydMXAawHoIdxiYwN1+2XvFySw=
 github.com/go-ego/cedar v0.10.2/go.mod h1:OlEbpcRpzwp69CoCXPJTmrOzELoGAmFDgW3hdWrHHc0=
-github.com/go-ego/gse v0.64.1 h1:EtSXdKaKiOIG/xZhJS4jIQDGEdjroXAHCQMIyXkaiWI=
-github.com/go-ego/gse v0.64.1/go.mod h1:nSPjeaLwb5AlHI4b83iXFM+cA2wBx2Xxq/Bbf0BU0ME=
 github.com/go-ego/gse v0.65.1 h1:rbyPWq0K9CFyJlOqD2ao9Bs75yvPiQPhWVjfS6iutHI=
 github.com/go-ego/gse v0.65.1/go.mod h1:nSPjeaLwb5AlHI4b83iXFM+cA2wBx2Xxq/Bbf0BU0ME=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=

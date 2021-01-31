@@ -21,7 +21,7 @@ func Example() {
 
 	if err := mapping.AddCustomTokenizer("gse", map[string]interface{}{
 		"type":       "gse",
-		"user_dicts": "",
+		"user_dicts": "./data/dict/zh/dict.txt",
 	}); err != nil {
 		panic(err)
 	}
@@ -156,7 +156,7 @@ func TestSearch(t *testing.T) {
 
 	if err := mapping.AddCustomTokenizer("gse", map[string]interface{}{
 		"type":       "gse",
-		"user_dicts": "",
+		"user_dicts": "./data/dict/zh/dict.txt",
 	}); err != nil {
 		panic(err)
 	}
