@@ -5,8 +5,10 @@ Bleve 搜索引擎 Gse 插件。
 # Get the plugin
 
 ```go
-go get -u github.com/leopku/bleve-gse-tokenizer
+go get -u github.com/leopku/bleve-gse-tokenizer/v2
 ```
+
+> To work with v1 version of bleve, please visit [v1](/leopku/bleve-gse-tokenizer/tree/v1) branch.
 
 # How to use
 
