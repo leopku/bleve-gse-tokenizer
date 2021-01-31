@@ -20,7 +20,7 @@ func NewGseTokenizer(dictFiles string) *GseTokenizer {
 	// segmenter.SkipLog = true
 	var segmenter gse.Segmenter
 	segmenter.SkipLog = true
-	segmenter.LoadDict("./data/dict/zh/dict.txt", dictFiles)
+	segmenter.LoadDict(dictFiles)
 	return &GseTokenizer{&segmenter}
 }
 
@@ -48,10 +48,9 @@ func (t *GseTokenizer) Tokenize(sentence []byte) analysis.TokenStream {
 }
 
 func tokenizerConstructor(config map[string]interface{}, cache *registry.Cache) (analysis.Tokenizer, error) {
-	dicts := ""
-	userDicts, ok := config["user_dicts"].(string)
-	if !ok {
-		dicts = userDicts
+	dicts, ok := config["user_dicts"].(string)
+	if !ok || dicts == "" {
+		panic("Initialize Gse tokenizer error: user dicts should NOT be empty")
 	}
 	return NewGseTokenizer(dicts), nil
 }
