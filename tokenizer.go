@@ -1,8 +1,6 @@
 package gsebleve
 
 import (
-	"os"
-
 	"github.com/blevesearch/bleve/v2/analysis"
 	"github.com/blevesearch/bleve/v2/registry"
 	"github.com/go-ego/gse"
@@ -20,12 +18,9 @@ func NewGseTokenizer(dictFiles string) *GseTokenizer {
 	// segmenter := gse.New("./data/dict/zh/dict.txt", dictFiles)
 	// segmenter.MoreLog = false
 	// segmenter.SkipLog = true
-	dictFile := "./data/dict/zh/dict.txt"
 	var segmenter gse.Segmenter
 	segmenter.SkipLog = true
-	if IsExist(dictFile) {
-		segmenter.LoadDict(dictFile, dictFiles)
-	}
+	segmenter.LoadDict("./data/dict/zh/dict.txt", dictFiles)
 	return &GseTokenizer{&segmenter}
 }
 
@@ -63,10 +58,4 @@ func tokenizerConstructor(config map[string]interface{}, cache *registry.Cache) 
 
 func init() {
 	registry.RegisterTokenizer(Name, tokenizerConstructor)
-}
-
-// IsExist checks if the given file exist
-func IsExist(fileName string) bool {
-	_, err := os.Stat(fileName)
-	return err == nil || os.IsExist(err)
 }
