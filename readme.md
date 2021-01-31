@@ -62,7 +62,7 @@ go get -u github.com/leopku/bleve-gse-tokenizer
 	index.Close()
 ```
 
-See [`bleve_test.go`](blob/master/bleve_test.go) for more examples.
+See [`bleve_test.go`](bleve_test.go) for more examples.
 
 # Ready-made tool(s)
 
