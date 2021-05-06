@@ -72,6 +72,10 @@ go get -u github.com/leopku/bleve-gse-tokenizer/v2
 
 See `bleve_test.go` for more examples.
 
+# Issue
+
+Issues like accurate of word segments please referer [original issue list of gse](https://github.com/go-ego/gse/issues)
+
 # Credit
 
 * https://github.com/blevesearch/bleve
