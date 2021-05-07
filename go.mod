@@ -5,8 +5,6 @@ go 1.14
 require (
 	github.com/RoaringBitmap/roaring v0.5.5 // indirect
 	github.com/blevesearch/bleve/v2 v2.0.3
-	github.com/blevesearch/scorch_segment_api v1.0.0 // indirect
-	github.com/blevesearch/scorch_segment_api/v2 v2.0.1 // indirect
 	github.com/glycerine/go-unsnap-stream v0.0.0-20210130063903-47dfef350d96 // indirect
 	github.com/go-ego/gse v0.67.0
 	github.com/golang/protobuf v1.4.3 // indirect
